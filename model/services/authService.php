@@ -21,8 +21,36 @@ class authService
 		$this->mysqlQueries=new MysqlQueriesAuth();
 		switch($this->command)
 		{
+			case 'REGISTER'  			        : $this->register();   								break;
+			case 'LOGIN'  			            : $this->login();   								break;
+			case 'GET_USER'  			        : $this->getUser();   								break;
+			case 'DELETE_USER'  			    : $this->deleteUser();   							break;
 			default 							: $this->defaultError(); 							break;
 		}
+	}
+
+	function deleteUser()
+	{
+		$res=$this->mysqlQueries->deleteUser();
+		echo json_encode($res);     
+	}  
+
+	function getUser()
+	{
+		$res=$this->mysqlQueries->getUser();
+		echo json_encode($res);     
+	}
+
+	function register()
+	{
+		$res=$this->mysqlQueries->register();
+		echo json_encode($res);     
+	}  
+	
+	function login()
+	{
+		$res=$this->mysqlQueries->login();
+		echo json_encode($res);     
 	}
 
 	function defaultError()
