@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
+    <title>Core PHP Crud Operations</title>
+    <link rel="stylesheet" href="dist/modules/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="dist/modules/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="dist/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="dist/css/style.css">
+    <link rel="stylesheet" href="dist/css/profile.css">
+    <link rel="stylesheet" href="dist/modules/toastr/build/toastr.min.css">
+</head>
+
+<body onload="Footer(); Sidebar(); viewUser();">
+    <div id="app">
+        <div class="main-wrapper">
+            <div class="navbar-bg"></div>
+            <div class="main-sidebar">
+                <aside id="sidebar-wrapper">
+                    <div id="SidebarBlock"></div>
+                </aside>
+            </div>
+            <div class="main-content">
+                <section class="section">
+                    <div class="row">
+                        <div class="col-8 col-md-8 col-lg-8">
+                            <div class="input-group mb-3 input-group-lg">
+                                <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+                            </div>
+                            <div class="input-group mb-3 input-group-lg">
+                                <input type="text" class="form-control" id="password" name="password" placeholder="Password">
+                            </div>
+                            <div class="input-group mb-3 input-group-lg">
+                                <select class="form-control" id="hobbies" name="hobbies">
+                                    <option value="">Select</option>
+                                    <option value="Sports">Sports</option>
+                                    <option value="Music">Music</option>
+                                    <option value="Study">Study</option>
+                                </select>
+                                <input type="hidden" class="form-control" id="UserID" name="UserID">
+                            </div>
+                            <div class="input-group mb-3 input-group-lg">
+                                <button type="submit" onclick="editUser();">Update</button>
+                            </div>
+                        </div>
+                        <div class="col-4 col-md-4 col-lg-4">
+                            <div class="d-flex justify-content-left h-100">
+                                <div class="image_outer_container">
+                                    <div class="green_icon"></div>
+                                    <div class="image_inner_container">
+                                        <img src="filemanager/uddeshya.jpg">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div id="FooterBlock"></div>
+        </div>
+    </div>
+    <script src="controller/authController.js"></script>t>
+    <script src="dist/modules/jquery.min.js"></script>
+    <script src="dist/modules/popper.js"></script>
+    <script src="dist/modules/tooltip.js"></script>
+    <script src="dist/modules/bootstrap/js/bootstrap.min.js"></script>
+    <script src="dist/modules/nicescroll/jquery.nicescroll.min.js"></script>
+    <script src="dist/modules/scroll-up-bar/dist/scroll-up-bar.min.js"></script>
+    <script src="dist/js/sa-functions.js"></script>
+    <script src="dist/modules/chart.min.js"></script>
+    <script src="dist/modules/toastr/build/toastr.min.js"></script>
+    <script src="dist/js/scripts.js"></script>
+    <script src="dist/js/custom.js"></script>
+    <script src="dist/js/moment.min.js"></script>
+    <script src="dist/layout/footer/footer.js"></script>
+    <script src="dist/layout/sidebar/sidebar.js"></script>
+</body>
+
+</html>

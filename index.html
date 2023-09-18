@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
+    <title>Core PHP Crud Operations</title>
+    <link rel="stylesheet" href="dist/modules/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="dist/modules/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="dist/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="dist/css/style.css">
+    <link rel="stylesheet" href="dist/modules/toastr/build/toastr.min.css">
+</head>
+
+<body onload="chkLogin(); Footer(); Sidebar(); getUser();">
+    <div id="app">
+        <div class="main-wrapper">
+            <div class="navbar-bg"></div>
+            <div class="main-sidebar">
+                <aside id="sidebar-wrapper">
+                    <div id="SidebarBlock"></div>
+                </aside>
+            </div>
+            <div class="main-content">
+                <section class="section">
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>Hobbies</th>
+                                <th>View</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody id="JobsList"></tbody>
+                    </table>
+                </section>
+            </div>
+            <div id="FooterBlock"></div>
+        </div>
+    </div>
+    <script src="controller/authController.js"></script>t>
+    <script src="dist/modules/jquery.min.js"></script>
+    <script src="dist/modules/popper.js"></script>
+    <script src="dist/modules/tooltip.js"></script>
+    <script src="dist/modules/bootstrap/js/bootstrap.min.js"></script>
+    <script src="dist/modules/nicescroll/jquery.nicescroll.min.js"></script>
+    <script src="dist/modules/scroll-up-bar/dist/scroll-up-bar.min.js"></script>
+    <script src="dist/js/sa-functions.js"></script>
+    <script src="dist/modules/chart.min.js"></script>
+    <script src="dist/modules/toastr/build/toastr.min.js"></script>
+    <script src="dist/js/scripts.js"></script>
+    <script src="dist/js/custom.js"></script>
+    <script src="dist/js/moment.min.js"></script>
+    <script src="dist/layout/footer/footer.js"></script>
+    <script src="dist/layout/sidebar/sidebar.js"></script>
+</body>
+
+</html>

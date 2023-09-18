@@ -25,9 +25,23 @@ class authService
 			case 'LOGIN'  			            : $this->login();   								break;
 			case 'GET_USER'  			        : $this->getUser();   								break;
 			case 'DELETE_USER'  			    : $this->deleteUser();   							break;
+			case 'VIEW_USER'  			    	: $this->viewUser();   								break;
+			case 'EDIT_USER'  			    	: $this->editUser();   								break;
 			default 							: $this->defaultError(); 							break;
 		}
 	}
+
+	function editUser()
+	{
+		$res=$this->mysqlQueries->editUser();
+		echo json_encode($res);     
+	} 
+
+	function viewUser()
+	{
+		$res=$this->mysqlQueries->viewUser();
+		echo json_encode($res);     
+	}  
 
 	function deleteUser()
 	{

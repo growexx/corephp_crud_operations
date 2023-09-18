@@ -19,9 +19,9 @@ class MysqlQueriesAuth extends Db
 		parent::__destruct();
 	}
 
-	function checkEmailExist($Email)
+	function checkEmailExist($email)
 	{
-		$sql = "SELECT * FROM user WHERE Mail='$Email' ";
+		$sql = "SELECT * FROM user WHERE Mail='$email' ";
 		$res = $this->_executeQuery($sql);
 		$res1 = $this->getAll($res);
 		if ($res1)
@@ -39,23 +39,23 @@ class MysqlQueriesAuth extends Db
 		$registerData = $_REQUEST['registerData'];
 		$registerData = json_decode($registerData, true);
 
-		$Email = $registerData['user_email'];
-		$Password = $registerData['user_password'];
-		$Hobbies = $registerData['hobbies'];
+		$email = $registerData['user_email'];
+		$password = $registerData['user_password'];
+		$hobbies = $registerData['hobbies'];
 
 
-		$emailExist = $this->checkEmailExist($Email);
+		$emailExist = $this->checkEmailExist($email);
 
 		if($emailExist==0) {
 			$imgFile =  $_FILES['userImg']['name'];
-			$pat = $_SERVER['DOCUMENT_ROOT'] . "/corephp_crud_operations/FileManager";
-			$fileUrl = "http://" . $_SERVER['HTTP_HOST'] . "/corephp_crud_operations/FileManager/$imgFile";
+			$pat = $_SERVER['DOCUMENT_ROOT'] . "/filemanager";
+			$fileUrl = "http://" . $_SERVER['HTTP_HOST'] . "/filemanager/$imgFile";
 			$fileName = $pat . '/' . $imgFile;
 			move_uploaded_file($_FILES["userImg"]["tmp_name"], $fileName);
-			$path_to_store_file = "corephp_crud_operations/FileManager/" . $imgFile;
+			$path_to_store_file = "filemanager/" . $imgFile;
 
 			$sql = "INSERT INTO user(Mail, Password, Hobbies, UserImg)
-			VALUES('$Email','$Password','$Hobbies','$path_to_store_file')";
+			VALUES('$email','$password','$hobbies','$path_to_store_file')";
 			$res = $this->_executeQuery($sql);
 
 			if ($res)
@@ -79,13 +79,13 @@ class MysqlQueriesAuth extends Db
 
 	public function login()
 	{
-		$Email = $_POST['email'];
-		$Password = $_POST['password'];
-		$EmailExist = $this->checkEmailExist($Email);
+		$email = $_POST['email'];
+		$password = $_POST['password'];
+		$emailExist = $this->checkEmailExist($email);
 
-		if($EmailExist==1) {
+		if($emailExist==1) {
 
-			$sql = "SELECT * FROM user WHERE Mail='$Email' and Password='$Password'";
+			$sql = "SELECT * FROM user WHERE Mail='$email' and Password='$password'";
 			$res = $this->_executeQuery($sql);
 			$res1 = $this->getAll($res);
 
@@ -130,9 +130,9 @@ class MysqlQueriesAuth extends Db
 
 	public function deleteUser()
 	{
-		$UserID = $_POST['UserID'];
+		$userID = $_POST['UserID'];
 
-		$sql = "DELETE from user WHERE UserID='$UserID'";
+		$sql = "DELETE from user WHERE UserID='$userID'";
 		$res = $this->_executeQuery($sql);
 
 		if ($res)
@@ -144,6 +144,52 @@ class MysqlQueriesAuth extends Db
 		{
 			$arr['status'] = 'Fail';
 			$arr['response_text'] = 'Unable To Remove..!!';
+		}
+
+		return $arr;
+	}
+
+	public function viewUser()
+	{
+		$userID = $_GET['UserID'];
+
+		$sql = "SELECT * from user WHERE UserID='$userID'";
+		$res = $this->_executeQuery($sql);
+		$res1 = $this->getAll($res);
+
+		if ($res1)
+		{
+			$arr['status'] = 'Success';
+			$arr['userDetails'] = $res1;
+		}
+		else
+		{
+			$arr['status'] = 'Fail';
+			$arr['response_text'] = 'No User Found';
+		}
+
+		return $arr;
+	}
+
+	public function editUser()
+	{
+		$userID = $_POST['UserID'];
+		$email = $_POST['email'];
+		$password = $_POST['password'];
+		$hobbies = $_POST['hobbies'];
+
+		$sql = "UPDATE user SET Mail='$email', Password='$password', Hobbies='$hobbies' WHERE UserID='$userID'";
+		$res = $this->_executeQuery($sql);
+
+		if ($res)
+		{
+			$arr['status'] = 'Success';
+			$arr['response_text'] = 'Successfully Updated';
+		}
+		else
+		{
+			$arr['status'] = 'Fail';
+			$arr['response_text'] = 'UnSuccessfully Updated';
 		}
 
 		return $arr;

@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
+    <title>Core PHP Crud Operations</title>
+    <link rel="stylesheet" href="dist/modules/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="dist/modules/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="dist/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="dist/modules/toastr/build/toastr.min.css">
+    <link rel="stylesheet" href="dist/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4" style="margin-top: 100px;">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h4>Login</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input id="email" type="email" class="form-control" name="email" placeholder="Enter Email" tabindex="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input id="password" type="Password" class="form-control" name="password" placeholder="Enter Password" tabindex="1">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block" tabindex="4" onclick="login();">
+                                Login
+                            </button>
+                            <hr>
+                            <a href="register.html"><button type="submit" class="btn btn-primary btn-block" tabindex="4">
+                                Register
+                            </button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="dist/modules/jquery.min.js"></script>
+    <script src="dist/modules/popper.js"></script>
+    <script src="dist/modules/tooltip.js"></script>
+    <script src="dist/modules/bootstrap/js/bootstrap.min.js"></script>
+    <script src="dist/modules/nicescroll/jquery.nicescroll.min.js"></script>
+    <script src="dist/modules/scroll-up-bar/dist/scroll-up-bar.min.js"></script>
+    <script src="dist/js/sa-functions.js"></script>
+    <script src="dist/modules/toastr/build/toastr.min.js"></script>
+    <script src="dist/js/scripts.js"></script>
+    <script src="dist/js/custom.js"></script>
+    <script src="controller/authController.js"></script>
+</body>
+
+</html>

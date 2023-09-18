@@ -1,4 +1,4 @@
-var global_hostname = 'localhost/phpsetup';  // decleared once and can use it anywhere in project
+var global_hostname = 'localhost/pli/corephp_crud_operations';  // decleared once and can use it anywhere in project
 var authcred = JSON.parse(window.localStorage.getItem('authdata'));
 
 function validateEmail(email) {
@@ -190,6 +190,73 @@ function deleteUser(UserID) {
             if (result.status == 'Success') {
                 toastr.success(result.response_text, 'Success');
                 getUser();
+            }
+            else{
+                toastr.error(result.response_text, 'Error');
+            }
+        },
+        error: function (result) {
+        }
+    });
+}
+
+function userDetails(UserID) {
+    var IndexSearch = UserID;
+    document.location.href = "userDetails.html?" + IndexSearch;
+}
+
+function viewUser (IndexSearch) {
+
+    var indexsearch = document.location.href.split('?');
+    var UserID = indexsearch[1];
+
+    var viewUserObj = {
+        'UserID': UserID,
+    };
+
+    var URL = 'http://' + global_hostname + '/model/services/authService.php?cmd=VIEW_USER';
+
+    $.ajax({
+        type: "GET",
+        url: URL,
+        data: viewUserObj,
+        success: function (res) {
+            var result = jQuery.parseJSON(res);
+            if (result.status == 'Success') {
+                $('#email').val(result.userDetails[0].Mail);
+                $('#password').val(result.userDetails[0].Password);
+                $('#hobbies').val(result.userDetails[0].Hobbies);
+                $('#UserID').val(result.userDetails[0].UserID);
+                $('#profileImg').attr("src", result.userDetails[0].UserImg);
+            }
+            else{
+                toastr.error(result.response_text, 'Error');
+            }
+        },
+        error: function (result) {
+        }
+    });
+}
+
+function editUser() {
+
+    var editUserObj = {
+        'UserID': $("#UserID").val(),
+        'email': $("#email").val(),
+        'password': $("#password").val(),
+        'hobbies': $("#hobbies").val(),
+    };
+
+    var URL = 'http://' + global_hostname + '/model/services/authService.php?cmd=EDIT_USER';
+
+    $.ajax({
+        type: "POST",
+        url: URL,
+        data: editUserObj,
+        success: function (res) {
+            var result = jQuery.parseJSON(res);
+            if (result.status == 'Success') {
+                toastr.success(result.response_text, 'Success');
             }
             else{
                 toastr.error(result.response_text, 'Error');
